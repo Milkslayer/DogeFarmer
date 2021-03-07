@@ -8,14 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "DogecoinManager",
+"language": "GDScript",
+"path": "res://src/DogecoinManager.gd"
+} ]
 _global_script_class_icons={
-
+"DogecoinManager": ""
 }
 
 [application]
 
 config/name="DogeFarmer"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [display]
