@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "ClickerUpgrade",
+"language": "GDScript",
+"path": "res://src/ClickerUpgrade.gd"
+}, {
+"base": "Node",
 "class": "DogecoinManager",
 "language": "GDScript",
 "path": "res://src/DogecoinManager.gd"
 } ]
 _global_script_class_icons={
+"ClickerUpgrade": "",
 "DogecoinManager": ""
 }
 
@@ -28,6 +34,10 @@ config/icon="res://icon.png"
 
 window/size/width=1080
 window/size/height=720
+
+[editor_plugins]
+
+enabled=PoolStringArray( "gut" )
 
 [rendering]
 
