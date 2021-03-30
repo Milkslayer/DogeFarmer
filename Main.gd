@@ -8,13 +8,9 @@ onready var coin_label = $GUI/CoinLabel
 onready var auto_farm_timer = $AutoFarmTimer
 
 func _ready():
-	get_node("DogeClicker").connect("click", self, "_add_dogecoins_click")
+	_init_signals()
 	
 	_dogecoin_manager = DogecoinManager.new()
-	var farmer = AutoFarmer.new(10, 1)
-	var farmer2 = AutoFarmer.new(0.3, 3)
-	_auto_farmers.append(farmer)
-	_auto_farmers.append(farmer2)
 	
 	auto_farm_timer.start()
 	
@@ -31,6 +27,7 @@ func _add_dogecoins_click():
 	_dogecoin_manager.add_coins_click(coins_to_add)
 	print("Added %d coins" % (coins_to_add))
 
+
 func _add_dogecoins_auto():
 	if _auto_farmers.size() != 0:
 		for farmer in _auto_farmers:
@@ -38,6 +35,11 @@ func _add_dogecoins_auto():
 				var coins_to_add = farmer.get_farmed_coins()
 				_dogecoin_manager.add_coins_click(coins_to_add)
 				print("AutoFarm added %f coins" % (coins_to_add))
-				
+
+
+func _init_signals():
+	get_node("DogeClicker").connect("click", self, "_add_dogecoins_click")	
+
+
 func _on_AutoFarmTimer_timeout():
 	_add_dogecoins_auto()
