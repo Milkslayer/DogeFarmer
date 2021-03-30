@@ -12,6 +12,16 @@ __meta__ = {
 [node name="GUI" type="Control" parent="."]
 margin_right = 1080.0
 margin_bottom = 720.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="GUI"]
+margin_left = 595.0
+margin_top = 171.0
+margin_right = 1034.0
+margin_bottom = 236.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -25,6 +35,7 @@ __meta__ = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="GUI"]
+visible = false
 margin_left = 545.0
 margin_right = 1080.0
 margin_bottom = 720.0
@@ -56,3 +67,6 @@ __meta__ = {
 [node name="DogeClicker" parent="." instance=ExtResource( 2 )]
 position = Vector2( 268.766, 190.201 )
 scale = Vector2( 4.16, 4.16 )
+
+[node name="AutoFarmTimer" type="Timer" parent="."]
+[connection signal="timeout" from="AutoFarmTimer" to="." method="_on_AutoFarmTimer_timeout"]
