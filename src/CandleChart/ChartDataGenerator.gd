@@ -2,6 +2,7 @@ extends Node
 
 @export_node_path(Node2D) var chartPath: NodePath
 @export_range(0.1, 10) var updateDelay: float
+@export_range(0, 1) var growthProbability: float
  
 var withoutUpdate: float = 0
 var chart
@@ -18,14 +19,17 @@ func _ready():
 		
 	if !updateDelay:
 		updateDelay  = 0.1 
- 
+	
+	if !growthProbability:
+		growthProbability  = 0.5  
+
 func _process(delta):
 	if !chart:
 		return
 	withoutUpdate += delta
 	if withoutUpdate >= updateDelay:
 		withoutUpdate = 0
-		generateCandle(rnd.randf() >  0.5)
+		generateCandle(rnd.randf() <=  growthProbability)
 		chart.update()
 		
 func generateCandle(isPosit: bool):

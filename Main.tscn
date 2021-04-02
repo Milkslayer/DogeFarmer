@@ -55,55 +55,42 @@ __meta__ = {
 }
 
 [node name="GUI" type="Control" parent="."]
-margin_right = 1080.0
-margin_bottom = 720.0
 mouse_filter = 2
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureButton" type="TextureButton" parent="GUI"]
-margin_left = 595.0
-margin_top = 171.0
-margin_right = 1034.0
-margin_bottom = 236.0
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="GUI"]
-margin_left = 535.0
-margin_right = 545.0
-margin_bottom = 720.0
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect2" type="ColorRect" parent="GUI"]
 visible = false
-margin_left = 545.0
-margin_right = 1080.0
-margin_bottom = 720.0
 mouse_filter = 2
 color = Color( 0.443137, 0.443137, 0.443137, 1 )
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect3" type="ColorRect" parent="GUI"]
-margin_right = 535.0
-margin_bottom = 720.0
 mouse_filter = 2
 color = Color( 0.239216, 0.239216, 0.239216, 1 )
+script = null
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CoinLabel" type="Label" parent="GUI"]
-margin_left = 375.0
-margin_top = 2.51472
-margin_right = 525.0
-margin_bottom = 26.5147
 text = "Dogecoins"
 structured_text_bidi_override_options = [  ]
 script = null
@@ -127,4 +114,6 @@ position = Vector2( 268.766, 190.201 )
 scale = Vector2( 4.16, 4.16 )
 
 [node name="AutoFarmTimer" type="Timer" parent="."]
+script = null
+
 [connection signal="timeout" from="AutoFarmTimer" to="." method="_on_AutoFarmTimer_timeout"]

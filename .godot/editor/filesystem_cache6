@@ -1,6 +1,6 @@
 515ae35726e8b3b9d928fc2455c3174c
-::res://::1617382015
-default_env.tres::Environment::1617382060::0::1::::<><>::
+::res://::1617384270
+default_env.tres::Environment::1617384270::0::1::::<><>::
 icon.png::StreamTexture2D::1615190477::1617366413::1::::<><>::
 Main.gd::GDScript::1617367635::0::1::::<><>::
 Main.tscn::PackedScene::1617366691::0::1::::<><>::res://Main.gd<>res://src/dogeclicker/DogeClicker.tscn
@@ -56,12 +56,13 @@ LobsterTwo-Bold.ttf::FontData::1617366438::0::1::::<><>::
 LobsterTwo-BoldItalic.ttf::FontData::1617366438::0::1::::<><>::
 LobsterTwo-Italic.ttf::FontData::1617366438::0::1::::<><>::
 LobsterTwo-Regular.ttf::FontData::1617366438::0::1::::<><>::
-::res://src/::1617382006
-CandelChart.gd::GDScript::1617381435::0::1::::<>Node2D<>::
+::res://src/::1617382060
 DogecoinManager.gd::GDScript::1617367635::0::1::::DogecoinManager<>Node<>::
 ::res://src/AutoFarmer/::1617366438
 AutoFarmer.gd::GDScript::1617366438::0::1::::AutoFarmer<>Node<>::
-::res://src/CandleChart/::1617382001
+::res://src/CandleChart/::1617384136
+CandelChart.gd::GDScript::1617383677::0::1::::<>Node2D<>::
+ChartDataGenerator.gd::GDScript::1617384136::0::1::::<>Node<>::
 ::res://src/ClickerUpgrade/::1617366438
 ClickerUpgrade.gd::GDScript::1617366438::0::1::::ClickerUpgrade<>Node<>::
 ::res://src/dogeclicker/::1615190477
@@ -69,8 +70,8 @@ DogeClicker.gd::GDScript::1615190477::0::1::::<>Area2D<>::
 DogeClicker.tscn::PackedScene::1615190477::0::1::::<><>::res://icon.png<>res://src/dogeclicker/DogeClicker.gd
 ::res://src/shader/::1617366413
 candelistic_chart.shader::Shader::1617366413::0::1::::<><>::
-::res://test/::1617382015
-Chart.tscn::PackedScene::1617382060::0::1::::<><>::res://src/CandelChart.gd
+::res://test/::1617384270
+Chart.tscn::PackedScene::1617384270::0::1::::<><>::res://src/CandleChart/CandelChart.gd<>res://src/CandleChart/ChartDataGenerator.gd
 tests.tscn::PackedScene::1617366438::0::1::::<><>::res://addons/gut/plugin_control.gd
 ::res://test/unit/::1617367635
 test_clicker_upgrade.gd::GDScript::1617367635::0::1::::<><>::
