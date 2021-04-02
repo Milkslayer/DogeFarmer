@@ -1,3 +1,11 @@
 res://CandelChart.gd
 res://Chart.tscn
+res://Main.gd
+res://addons/gut/plugin_control.gd
 res://default_env.tres
+res://src/CandleChart/CandelChart.gd
+res://src/CandleChart/ChartDataGenerator.gd
+res://src/DogecoinManager.gd
+res://test/Chart.tscn
+res://test/unit/test_clicker_upgrade.gd
+res://test/unit/test_example.gd
