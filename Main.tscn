@@ -56,10 +56,17 @@ __meta__ = {
 }
 
 [node name="ScrollingBackground" parent="GUI/Background" instance=ExtResource( 3 )]
-pause_scrolling = true
 
-[node name="CoinsPerSecondLabel" type="Label" parent="GUI"]
-margin_left = 479.25
+[node name="LeftSection" type="Control" parent="GUI"]
+margin_right = 640.0
+margin_bottom = 720.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinsPerSecondLabel" type="Label" parent="GUI/LeftSection"]
+margin_left = 461.25
 margin_top = 2.3784
 margin_right = 633.25
 margin_bottom = 23.3784
@@ -74,11 +81,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DogecoinLabel" type="Label" parent="GUI"]
+[node name="DogecoinLabel" type="Label" parent="GUI/LeftSection"]
 margin_left = 195.0
 margin_top = 370.0
 margin_right = 445.0
-margin_bottom = 400.0
+margin_bottom = 401.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -89,11 +96,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CoinCounterLabel" type="Label" parent="GUI"]
-margin_left = 195.0
+[node name="CoinCounterLabel" type="Label" parent="GUI/LeftSection"]
+margin_left = 146.0
 margin_top = 400.0
-margin_right = 445.0
-margin_bottom = 430.0
+margin_right = 494.0
+margin_bottom = 431.0
 grow_horizontal = 2
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
@@ -105,7 +112,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" type="TextureButton" parent="GUI"]
+[node name="MenuButton" type="TextureButton" parent="GUI/LeftSection"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 60.0
@@ -123,4 +130,5 @@ __meta__ = {
 
 [node name="DogeClicker" parent="." instance=ExtResource( 2 )]
 position = Vector2( 320, 235 )
+[connection signal="pressed" from="GUI/LeftSection/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="timeout" from="AutoFarmTimer" to="." method="_on_AutoFarmTimer_timeout"]
