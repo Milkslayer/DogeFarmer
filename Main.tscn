@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Dogeclicker/DogeClicker.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ScrollingBackground/ScrollingBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/img/menuButton5.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/menuButton4.png" type="Texture" id=5]
+[ext_resource path="res://src/gui/MainTheme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/fonts/league-spartan-master/LeagueSpartan-Bold.otf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 7 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,14 +32,17 @@ margin_right = 1280.0
 margin_bottom = 720.0
 mouse_filter = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="Control" parent="GUI"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1280.0
+margin_bottom = 720.0
 mouse_filter = 2
 __meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -38,24 +57,66 @@ __meta__ = {
 
 [node name="ScrollingBackground" parent="GUI/Background" instance=ExtResource( 3 )]
 
-[node name="DogecoinLabel" type="Label" parent="GUI"]
-margin_top = 353.0
-margin_right = 640.0
-margin_bottom = 367.0
-text = "Dogecoins"
-
-[node name="CoinLabel" type="Label" parent="GUI"]
-margin_top = 353.0
-margin_right = 640.0
-margin_bottom = 367.0
+[node name="CoinsPerSecondLabel" type="Label" parent="GUI"]
+margin_left = 479.25
+margin_top = 2.3784
+margin_right = 633.25
+margin_bottom = 23.3784
+grow_horizontal = 0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Dogecoins/n"
+text = "99999999.000 Doge/s"
+align = 2
 __meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DogecoinLabel" type="Label" parent="GUI"]
+margin_left = 195.0
+margin_top = 370.0
+margin_right = 445.0
+margin_bottom = 400.0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Dogecoins"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinCounterLabel" type="Label" parent="GUI"]
+margin_left = 195.0
+margin_top = 400.0
+margin_right = 445.0
+margin_bottom = 430.0
+grow_horizontal = 2
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "999999999999999.00000"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="TextureButton" parent="GUI"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 60.0
+margin_bottom = 60.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="AutoFarmTimer" type="Timer" parent="."]
 
 [node name="DogeClicker" parent="." instance=ExtResource( 2 )]
-position = Vector2( 333.229, 237.234 )
+position = Vector2( 320, 235 )
 [connection signal="timeout" from="AutoFarmTimer" to="." method="_on_AutoFarmTimer_timeout"]
