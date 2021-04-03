@@ -56,6 +56,7 @@ __meta__ = {
 }
 
 [node name="ScrollingBackground" parent="GUI/Background" instance=ExtResource( 3 )]
+pause_scrolling = true
 
 [node name="CoinsPerSecondLabel" type="Label" parent="GUI"]
 margin_left = 479.25
@@ -69,6 +70,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "99999999.000 Doge/s"
 align = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -83,6 +85,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Dogecoins"
 align = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -98,6 +101,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "999999999999999.00000"
 align = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

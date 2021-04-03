@@ -10,7 +10,7 @@ uniform vec2 tiled_factor = vec2(1.0, 1.0);
 uniform float horizontal_speed = 1.0;
 uniform float vertial_speed = 1.0;
 uniform float transparency = 1.0;
-uniform float time;
+uniform float time = 0;
 
 
 void fragment(){
