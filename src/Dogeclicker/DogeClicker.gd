@@ -1,5 +1,7 @@
 extends Area2D
 
+onready var animation_player = $AnimationPlayer
+
 signal click
 
 func _ready():
@@ -10,3 +12,5 @@ func _input_event(viewport, event, shape_idx):
 	and event.button_index == BUTTON_LEFT \
 	and event .is_pressed():
 		emit_signal("click")
+		animation_player.stop()
+		animation_player.play("Click")
