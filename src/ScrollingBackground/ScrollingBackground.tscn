@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/img/bg_fragment.png" type="Texture" id=1]
+[ext_resource path="res://src/ScrollingBackground/ScrollingBackground.gd" type="Script" id=2]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -9,11 +10,14 @@ uniform vec2 tiled_factor = vec2(1.0, 1.0);
 uniform float horizontal_speed = 1.0;
 uniform float vertial_speed = 1.0;
 uniform float transparency = 1.0;
+uniform float time;
+
 
 void fragment(){
 	vec2 tiled_uvs = UV * tiled_factor;
-	tiled_uvs.y += TIME * vertial_speed;
-	tiled_uvs.x += TIME * horizontal_speed;
+	
+	tiled_uvs.y += time * vertial_speed;
+	tiled_uvs.x += time * horizontal_speed;
 	
 	COLOR = texture(TEXTURE, tiled_uvs);
 	COLOR.a = transparency;
@@ -26,6 +30,7 @@ shader_param/tiled_factor = Vector2( 2, 2 )
 shader_param/horizontal_speed = 0.1
 shader_param/vertial_speed = 0.3
 shader_param/transparency = 0.407
+shader_param/time = 60.01
 
 [node name="ScrollingBackground" type="TextureRect"]
 material = SubResource( 2 )
@@ -34,6 +39,8 @@ margin_bottom = 720.0
 mouse_filter = 2
 texture = ExtResource( 1 )
 stretch_mode = 2
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+pause_scrolling = false
