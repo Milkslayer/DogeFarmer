@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Dogeclicker/DogeClicker.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/img/menuButton4.png" type="Texture" id=5]
 [ext_resource path="res://src/gui/MainTheme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/fonts/league-spartan-master/LeagueSpartan-Bold.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://src/gui/PauseScreen.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -126,9 +127,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AutoFarmTimer" type="Timer" parent="."]
-
-[node name="DogeClicker" parent="." instance=ExtResource( 2 )]
+[node name="DogeClicker" parent="GUI" instance=ExtResource( 2 )]
 position = Vector2( 320, 235 )
+
+[node name="PauseScreen" parent="GUI" instance=ExtResource( 8 )]
+visible = false
+
+[node name="AutoFarmTimer" type="Timer" parent="."]
 [connection signal="pressed" from="GUI/LeftSection/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="timeout" from="AutoFarmTimer" to="." method="_on_AutoFarmTimer_timeout"]

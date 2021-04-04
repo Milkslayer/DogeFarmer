@@ -15,6 +15,10 @@ onready var coin_counter_label = $GUI/LeftSection/CoinCounterLabel
 onready var cps_label = $GUI/LeftSection/CoinsPerSecondLabel
 onready var auto_farm_timer = $AutoFarmTimer
 onready var scrolling_bg = $GUI/Background/ScrollingBackground
+onready var pause_screen = $GUI/PauseScreen
+
+
+signal pause
 
 func _ready():
 	_init_signals()
@@ -60,18 +64,29 @@ func _calculate_cps():
 # Signals
 
 func _init_signals():
-	get_node("DogeClicker").connect("click", self, "_add_dogecoins_click")	
-	
+	get_node("GUI/DogeClicker").connect("click", self, "_on_DogeClick_pressed")	
+	get_node("GUI/PauseScreen").connect("unpause", self, "_on_game_unpause")
+	self.connect("pause", pause_screen, "pause_game")
 	
 func _on_AutoFarmTimer_timeout():
 	_add_dogecoins_auto()
 	
 	
 func _on_MenuButton_pressed():
+	emit_signal("pause")
 	current_state = GAME_STATES.paused
 	scrolling_bg.pause_scrolling = true
 	if DEBUG:
 		print("[INFO] Game state set to PAUSED")
+		
+func _on_DogeClick_pressed():
+	_add_dogecoins_click()
+	
+func _on_game_unpause():
+	current_state = GAME_STATES.active
+	scrolling_bg.pause_scrolling = false
+	if DEBUG:
+		print("[INFO] Game state set to ACTIVE")
 # Signals end
 
 
