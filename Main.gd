@@ -17,7 +17,6 @@ onready var auto_farm_timer = $AutoFarmTimer
 onready var scrolling_bg = $GUI/Background/ScrollingBackground
 onready var pause_screen = $GUI/PauseScreen
 
-
 signal pause
 
 func _ready():
@@ -29,7 +28,7 @@ func _ready():
 	
 	current_state = GAME_STATES.active
 	
-func _process(delta):
+func _process(_delta):
 	coin_counter_label.text = str(float(_dogecoin_manager.get_coins()))
 	cps_label.text = cps_formatted_str % (_calculate_cps())
 
@@ -87,6 +86,7 @@ func _on_game_unpause():
 	scrolling_bg.pause_scrolling = false
 	if DEBUG:
 		print("[INFO] Game state set to ACTIVE")
+		
 # Signals end
 
 

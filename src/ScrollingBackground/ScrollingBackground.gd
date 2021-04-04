@@ -7,7 +7,7 @@ var bg_offset = 0
 
 
 
-func _process(delta):
+func _process(_delta):
 	if not pause_scrolling:
 		material.set_shader_param('time', bg_offset);
 		bg_offset += 0.01
