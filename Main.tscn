@@ -5,9 +5,9 @@
 [ext_resource path="res://src/ScrollingBackground/ScrollingBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/img/menuButton5.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/menuButton4.png" type="Texture" id=5]
-[ext_resource path="res://src/gui/MainTheme.tres" type="Theme" id=6]
+[ext_resource path="res://src/GUI/MainTheme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/fonts/league-spartan-master/LeagueSpartan-Bold.otf" type="DynamicFontData" id=7]
-[ext_resource path="res://src/gui/PauseScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/GUI/PauseScreen.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -126,6 +126,54 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="RightSection" type="Control" parent="GUI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_right = 640.0
+margin_bottom = 720.0
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="GUI/RightSection"]
+margin_right = 640.0
+margin_bottom = 720.0
+theme = ExtResource( 6 )
+
+[node name="TabContainer" type="TabContainer" parent="GUI/RightSection"]
+margin_top = 170.0
+margin_right = 640.0
+margin_bottom = 720.0
+theme = ExtResource( 6 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upgrades" type="Tabs" parent="GUI/RightSection/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 55.0
+
+[node name="Tab" type="Tabs" parent="GUI/RightSection/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 55.0
+
+[node name="Tab2" type="Tabs" parent="GUI/RightSection/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 55.0
+
+[node name="Tab3" type="Tabs" parent="GUI/RightSection/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 55.0
 
 [node name="DogeClicker" parent="GUI" instance=ExtResource( 2 )]
 position = Vector2( 320, 235 )
