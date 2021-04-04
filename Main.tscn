@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Dogeclicker/DogeClicker.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/GUI/MainTheme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/fonts/league-spartan-master/LeagueSpartan-Bold.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://src/GUI/PauseScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/GUI/AutoUpgradePanel/AutoUpgradePanel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/img/default_upgrade_banner.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -156,6 +158,69 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 55.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/RightSection/TabContainer/Upgrades"]
+margin_left = 20.0
+margin_top = 40.0
+margin_right = 640.0
+margin_bottom = 495.0
+rect_min_size = Vector2( 620, 455 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradesVContainer" type="VBoxContainer" parent="GUI/RightSection/TabContainer/Upgrades/ScrollContainer"]
+margin_bottom = 480.0
+custom_constants/separation = 120
+
+[node name="AutoUpgradePanel" parent="GUI/RightSection/TabContainer/Upgrades/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+margin_right = 0.0
+margin_bottom = 0.0
+texture_normal = ExtResource( 10 )
+price = 0.5
+amount = 0
+title = "Upgrade 1"
+doge_per_sec = 1.0
+
+[node name="AutoUpgradePanel2" parent="GUI/RightSection/TabContainer/Upgrades/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+margin_top = 120.0
+margin_right = 0.0
+margin_bottom = 120.0
+texture_normal = ExtResource( 10 )
+price = 10.0
+amount = 0
+title = "Upgrade 2"
+doge_per_sec = 2.0
+
+[node name="AutoUpgradePanel4" parent="GUI/RightSection/TabContainer/Upgrades/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+margin_top = 240.0
+margin_right = 0.0
+margin_bottom = 240.0
+texture_normal = ExtResource( 10 )
+price = 500.0
+amount = 0
+title = "Upgrade 3"
+doge_per_sec = 3.0
+
+[node name="AutoUpgradePanel3" parent="GUI/RightSection/TabContainer/Upgrades/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+margin_top = 360.0
+margin_right = 0.0
+margin_bottom = 360.0
+texture_normal = ExtResource( 10 )
+price = 1000.0
+amount = 0
+title = "Upgrade 4"
+doge_per_sec = 4.0
+
+[node name="AutoUpgradePanel5" parent="GUI/RightSection/TabContainer/Upgrades/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+margin_top = 480.0
+margin_right = 0.0
+margin_bottom = 480.0
+texture_normal = ExtResource( 10 )
+price = 10000.0
+amount = 0
+title = "Upgrade 5"
+doge_per_sec = 5.0
 
 [node name="Tab" type="Tabs" parent="GUI/RightSection/TabContainer"]
 visible = false
