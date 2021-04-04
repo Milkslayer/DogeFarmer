@@ -16,6 +16,7 @@ onready var cps_label = $GUI/LeftSection/CoinsPerSecondLabel
 onready var auto_farm_timer = $AutoFarmTimer
 onready var scrolling_bg = $GUI/Background/ScrollingBackground
 onready var pause_screen = $GUI/PauseScreen
+onready var doge_clicker = $GUI/DogeClicker
 
 signal pause
 
@@ -28,9 +29,11 @@ func _ready():
 	
 	current_state = GAME_STATES.active
 	
+	
 func _process(_delta):
 	coin_counter_label.text = str(float(_dogecoin_manager.get_coins()))
 	cps_label.text = cps_formatted_str % (_calculate_cps())
+
 
 func _add_dogecoins_click():
 	var coins_to_add = 1
@@ -39,6 +42,7 @@ func _add_dogecoins_click():
 			if clicker_upgrade.get_type() == "ClickerUpgrade":
 				coins_to_add =+ clicker_upgrade.get_calculated_coins(coins_to_add)
 	_dogecoin_manager.add_coins_click(coins_to_add)
+	doge_clicker.set_coin_particles_amount(coins_to_add)
 	if DEBUG:
 		print("[INFO] Added %d coins" % (coins_to_add))
 
