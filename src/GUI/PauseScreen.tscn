@@ -5,7 +5,6 @@
 [ext_resource path="res://src/GUI/PauseScreen.gd" type="Script" id=3]
 [ext_resource path="res://src/GUI/PauseOverlay.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 1 )
@@ -21,7 +20,7 @@ __meta__ = {
 
 [node name="PauseOverlay" parent="." instance=ExtResource( 4 )]
 
-[node name="Label" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -178.5
@@ -30,6 +29,7 @@ margin_right = 178.5
 margin_bottom = 163.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Game Paused"
 align = 1
 __meta__ = {
