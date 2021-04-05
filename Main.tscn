@@ -180,7 +180,7 @@ texture_normal = ExtResource( 10 )
 price = 0.5
 amount = 0
 title = "Upgrade 1"
-doge_per_sec = 1.0
+doge_per_sec = 0.032
 
 [node name="AutoUpgradePanel2" parent="GUI/RightSection/TabContainer/Upgrades/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 120.0

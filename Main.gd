@@ -45,17 +45,17 @@ func _add_dogecoins_click():
 	_dogecoin_manager.add_coins(coins_to_add)
 	doge_clicker.set_coin_particles_amount(coins_to_add)
 	if DEBUG:
-		print("[INFO] Added %d coins" % (coins_to_add))
+		print("[INFO] Click added %d coins" % (coins_to_add))
 
 
 func _add_dogecoins_auto():
 	if _auto_farmers.size() != 0:
-		for farmer in _auto_farmers.values():
-			if farmer.get_type() == "AutoFarmer":
-				var coins_to_add = farmer.get_farmed_coins()
+		for key in _auto_farmers:
+			if _auto_farmers[key].get_type() == "AutoFarmer":
+				var coins_to_add = float(_auto_farmers[key].get_farmed_coins())
 				_dogecoin_manager.add_coins(coins_to_add)
 				if DEBUG:
-					print("[INFO] AutoFarm added %f coins" % (coins_to_add))
+					print("[INFO] %s added %f coins" % [key, coins_to_add])
 
 
 func _calculate_cps():
@@ -104,7 +104,7 @@ func _on_buy_upgrade(name, type, price, doge_per_sec):
 			if _auto_farmers.has(name):
 				_auto_farmers[name].add_farmer()
 			else:
-				_auto_farmers[name] = AutoFarmer.new(1, doge_per_sec)
+				_auto_farmers[name] = AutoFarmer.new(doge_per_sec, 1)
 		_dogecoin_manager.spend_coins(price)
 		emit_signal("buy_upgrade_success", name)
 		if DEBUG:
