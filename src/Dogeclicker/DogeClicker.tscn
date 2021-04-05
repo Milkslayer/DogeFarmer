@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Dogeclicker/DogeClicker.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/doge.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/dogecoin.png" type="Texture" id=3]
+[ext_resource path="res://src/Dogeclicker/CoinParticles.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/league-spartan-master/LeagueSpartan-Bold.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/GUI/MainTheme.tres" type="Theme" id=6]
+[ext_resource path="res://src/Dogeclicker/NumberParticles.gd" type="Script" id=7]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=13]
 resource_name = "Click"
 length = 0.2
 tracks/0/type = "value"
@@ -28,6 +32,13 @@ _data = [ Vector2( 0, 196.364 ), 0.0, 0.0, 0, 0, Vector2( 1, -157.091 ), 0.0, 0.
 [sub_resource type="CurveTexture" id=3]
 curve = SubResource( 2 )
 
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.437037, 0.992593, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0.272727 ), 0.0, 0.0, 0, 0, Vector2( 0.829114, 0.754545 ), 0.0, 0.0, 0, 0 ]
 
@@ -40,7 +51,7 @@ direction = Vector3( 0, 0, 0 )
 spread = 131.9
 flatness = 0.56
 gravity = Vector3( 0, 50, 0 )
-initial_velocity = 100.0
+initial_velocity = 65.52
 initial_velocity_random = 0.74
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -50,6 +61,26 @@ angle_curve = SubResource( 3 )
 scale = 0.07
 scale_random = 0.13
 scale_curve = SubResource( 5 )
+color_ramp = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_disable_z = true
+spread = 77.73
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 8.51
+initial_velocity_random = 0.03
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.29
+scale_random = 0.16
+color_ramp = SubResource( 8 )
+
+[sub_resource type="ViewportTexture" id=14]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="DynamicFont" id=12]
+outline_size = 1
+font_data = ExtResource( 5 )
 
 [node name="DogeClicker" type="Area2D"]
 scale = Vector2( 3.8, 3.8 )
@@ -57,6 +88,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+coin_particles_amount = 9999
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2( 0.122175, 0.122175 )
@@ -67,12 +99,49 @@ scale = Vector2( 0.122175, 0.122175 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Click = SubResource( 1 )
+anims/Click = SubResource( 13 )
 
 [node name="CoinParticles" type="Particles2D" parent="."]
-position = Vector2( -19.5619, 2.32091 )
 emitting = false
+amount = 1
 one_shot = true
 randomness = 0.38
 process_material = SubResource( 6 )
 texture = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Timer" type="Timer" parent="CoinParticles"]
+
+[node name="NumberParticles" type="Particles2D" parent="."]
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource( 9 )
+texture = SubResource( 14 )
+script = ExtResource( 7 )
+label_text = "-1"
+
+[node name="Timer" type="Timer" parent="NumberParticles"]
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 100, 20 )
+transparent_bg = true
+handle_input_locally = false
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+gui_disable_input = true
+
+[node name="Label" type="Label" parent="Viewport"]
+margin_right = 40.0
+margin_bottom = 21.0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "+-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
