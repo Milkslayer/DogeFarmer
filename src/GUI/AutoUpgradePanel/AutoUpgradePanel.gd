@@ -25,6 +25,7 @@ var amount_formatted_string = "x%d"
 var undiscovered_placeholder = "???"
 
 var upgrade_name: String
+var upgrade_hint: String
 
 var blocked_label_color: Color = Color(1, 0, 0, 1)
 var unblocked_label_color: Color = Color(1, 1, 1, 1)
@@ -40,9 +41,11 @@ func _ready():
 		button.texture_normal = texture_normal
 
 	upgrade_name = title
+	upgrade_hint = self.hint_tooltip
 
 	if !discovered:
 		title_label.text = undiscovered_placeholder
+		self.hint_tooltip = undiscovered_placeholder
 		amount_label.visible = false
 		blocked = true
 		
@@ -59,6 +62,8 @@ func on_buy_upgrade_success(name):
 		if !discovered:
 			amount_label.visible = true
 			title_label.text = upgrade_name
+			self.hint_tooltip = upgrade_hint
+			
 			discovered = true
 		set_amount(amount + 1)
 		amount_label.text = amount_formatted_string % (amount)
