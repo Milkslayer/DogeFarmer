@@ -9,7 +9,7 @@ var _dogecoin_manager: DogecoinManager
 var _clicker_upgrades: Array = []
 var _auto_farmers: Dictionary = {}
 
-var cps_formatted_str = "%.8f Doge/s"
+var cps_formatted_str = "%.3f Doge/s"
 
 onready var coin_counter_label = $GUI/LeftSection/CoinCounterLabel
 onready var cps_label = $GUI/LeftSection/CoinsPerSecondLabel
