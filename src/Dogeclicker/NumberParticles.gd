@@ -2,8 +2,6 @@ extends Particles2D
 
 
 onready var timer = $Timer
-onready var label = $Viewport/Label
-onready var viewport = $Viewport
 
 export var label_text: String = "+-"
 
