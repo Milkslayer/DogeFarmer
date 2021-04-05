@@ -17,7 +17,7 @@ onready var auto_farm_timer = $AutoFarmTimer
 onready var scrolling_bg = $GUI/Background/ScrollingBackground
 onready var pause_screen = $GUI/PauseScreen
 onready var doge_clicker = $GUI/DogeClicker
-onready var auto_upgrades_container = $GUI/RightSection/TabContainer/Upgrades/ScrollContainer/UpgradesVContainer
+onready var auto_upgrades_container = $GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer
 
 
 signal pause

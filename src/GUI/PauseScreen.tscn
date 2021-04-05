@@ -51,14 +51,14 @@ __meta__ = {
 
 [node name="Unpause" type="Button" parent="VBoxContainer"]
 margin_right = 358.0
-margin_bottom = 27.0
+margin_bottom = 41.0
 theme = ExtResource( 2 )
 text = "Return to Game"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
-margin_top = 47.0
+margin_top = 61.0
 margin_right = 358.0
-margin_bottom = 74.0
+margin_bottom = 102.0
 theme = ExtResource( 2 )
 text = "Options"
 __meta__ = {
@@ -66,9 +66,9 @@ __meta__ = {
 }
 
 [node name="SaveAndExit" type="Button" parent="VBoxContainer"]
-margin_top = 94.0
+margin_top = 122.0
 margin_right = 358.0
-margin_bottom = 121.0
+margin_bottom = 163.0
 theme = ExtResource( 2 )
 text = "Save and Exit"
 __meta__ = {
