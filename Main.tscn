@@ -23,6 +23,7 @@ size = 24
 font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxFlat" id=4]
+content_margin_bottom = 120.0
 draw_center = false
 
 [node name="Main" type="Node2D"]
@@ -166,7 +167,7 @@ margin_top = 55.0
 margin_left = 20.0
 margin_top = 40.0
 margin_right = 638.0
-margin_bottom = 495.0
+margin_bottom = 375.0
 rect_min_size = Vector2( 618, 455 )
 custom_styles/bg = SubResource( 4 )
 scroll_horizontal_enabled = false
@@ -178,25 +179,24 @@ __meta__ = {
 margin_right = 600.0
 margin_bottom = 480.0
 rect_min_size = Vector2( 600, 455 )
-rect_clip_content = true
 custom_constants/separation = 120
 
 [node name="AutoUpgradePanel" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_bottom = 0.0
 
-[node name="AutoUpgradePanel2" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+[node name="AutoUpgradePanel3" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 120.0
 margin_bottom = 120.0
 
-[node name="AutoUpgradePanel3" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+[node name="AutoUpgradePanel4" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 240.0
 margin_bottom = 240.0
 
-[node name="AutoUpgradePanel4" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+[node name="AutoUpgradePanel5" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 360.0
 margin_bottom = 360.0
 
-[node name="EmptyPlaceholder" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+[node name="AutoUpgradePanel2" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 480.0
 margin_bottom = 480.0
 
