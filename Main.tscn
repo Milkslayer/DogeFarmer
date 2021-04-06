@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Dogeclicker/DogeClicker.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/fonts/league-spartan-master/LeagueSpartan-Bold.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://src/GUI/PauseScreen/PauseScreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/GUI/AutoUpgradePanel/AutoUpgradePanel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/GUI/ScrollContainer.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -171,34 +172,55 @@ margin_bottom = 375.0
 rect_min_size = Vector2( 618, 455 )
 custom_styles/bg = SubResource( 4 )
 scroll_horizontal_enabled = false
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="UpgradesVContainer" type="VBoxContainer" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer"]
 margin_right = 600.0
-margin_bottom = 480.0
+margin_bottom = 455.0
 rect_min_size = Vector2( 600, 455 )
 custom_constants/separation = 120
 
 [node name="AutoUpgradePanel" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_bottom = 0.0
+texture_normal = null
+price = 0.0
+amount = 0
+doge_per_sec = 0.0
+blocked = true
+discovered = false
 
 [node name="AutoUpgradePanel3" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 120.0
 margin_bottom = 120.0
-
-[node name="AutoUpgradePanel4" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
-margin_top = 240.0
-margin_bottom = 240.0
+texture_normal = null
+price = 0.0
+amount = 0
+doge_per_sec = 0.0
+blocked = true
+discovered = false
 
 [node name="AutoUpgradePanel5" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
-margin_top = 360.0
-margin_bottom = 360.0
+margin_top = 240.0
+margin_bottom = 240.0
+texture_normal = null
+price = 0.0
+amount = 0
+doge_per_sec = 0.0
+blocked = true
+discovered = false
 
 [node name="AutoUpgradePanel2" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
-margin_top = 480.0
-margin_bottom = 480.0
+margin_top = 360.0
+margin_bottom = 360.0
+texture_normal = null
+price = 0.0
+amount = 0
+doge_per_sec = 0.0
+blocked = true
+discovered = false
 
 [node name="Upgrades" type="Tabs" parent="GUI/RightSection/TabContainer"]
 visible = false
