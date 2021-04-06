@@ -1,0 +1,147 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/Dogeclicker/DogeClicker.gd" type="Script" id=1]
+[ext_resource path="res://assets/img/doge.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/dogecoin.png" type="Texture" id=3]
+[ext_resource path="res://src/Dogeclicker/CoinParticles.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/league-spartan-master/LeagueSpartan-Bold.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/GUI/MainTheme.tres" type="Theme" id=6]
+[ext_resource path="res://src/Dogeclicker/NumberParticles.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Click"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.122175, 0.122175 ), Vector2( 0.118, 0.118 ), Vector2( 0.122, 0.122 ) ]
+}
+
+[sub_resource type="Curve" id=2]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 196.364 ), 0.0, 0.0, 0, 0, Vector2( 1, -157.091 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.437037, 0.992593, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0.272727 ), 0.0, 0.0, 0, 0, Vector2( 0.829114, 0.754545 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 131.9
+flatness = 0.56
+gravity = Vector3( 0, 50, 0 )
+initial_velocity = 65.52
+initial_velocity_random = 0.74
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 10.85
+damping_random = 0.03
+angle_curve = SubResource( 3 )
+scale = 0.07
+scale_random = 0.13
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_disable_z = true
+spread = 77.73
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 8.51
+initial_velocity_random = 0.03
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.29
+scale_random = 0.16
+color_ramp = SubResource( 5 )
+
+[sub_resource type="ViewportTexture" id=10]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="DynamicFont" id=11]
+outline_size = 1
+font_data = ExtResource( 5 )
+
+[node name="DogeClicker" type="Area2D"]
+scale = Vector2( 3.8, 3.8 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+coin_particles_amount = 9999
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 0.122175, 0.122175 )
+polygon = PoolVector2Array( -100.5, -264, -90.5, -257, -90.5, -249.4, -85.5, -247.4, -85.5, -239.4, -80.5, -237.4, -80.5, -230, -78.1, -230, -76.1, -225, -73.7, -225, -70.5, -221.8, -70.5, -215, -68.1, -215, -66.1, -210, -63.7, -210, -60.5, -206.8, -60.5, -199.4, -55.5, -197.4, -55.5, -195, -38.1, -195, -36.1, -190, -18.1, -190, -16.1, -185, 56.5, -185, 56.5, -188, 58.6, -188, 74.6, -205, 76.5, -205, 76.5, -206.8, 79.7, -210, 81.5, -210, 81.5, -211.8, 84.7, -215, 86.5, -215, 86.5, -216.8, 89.7, -220, 91.5, -220, 91.5, -221.8, 94.7, -225, 101.5, -225, 101.5, -232, 116.5, -244, 116.5, -246.8, 119.7, -250, 127.1, -250, 129.1, -255, 156.3, -255, 159.5, -251.8, 159.5, -244.4, 164.5, -242.4, 164.5, -230, 166.3, -230, 169.5, -226.8, 169.5, -215, 171.3, -215, 174.5, -211.8, 174.5, -184.4, 179.5, -182.4, 179.5, -144.6, 174.5, -142.6, 174.5, -124.6, 169.5, -122.6, 169.5, -120, 172.3, -120, 174.3, -105, 176.3, -105, 179.5, -101.8, 179.5, -90, 181.3, -90, 184.5, -86.8, 184.5, -70, 186.3, -70, 189.5, -66.8, 189.5, -29.4, 194.5, -27.4, 194.5, -10, 197.3, -10, 199.3, 5, 201.3, 5, 204.5, 8.20001, 204.5, 20, 206.3, 20, 209.5, 23.2, 209.5, 40, 211.3, 40, 214.5, 43.2, 214.5, 60, 217.3, 60, 219.3, 75, 221.3, 75, 224.5, 78.2, 224.5, 90, 226.3, 90, 229.5, 93.2, 229.5, 105, 231.3, 105, 234.5, 108.2, 234.5, 156, 232, 156, 229.5, 157.3, 229.5, 175.4, 224.5, 177.4, 224.5, 186, 222, 186, 219.5, 187.3, 219.5, 196, 217.4, 196, 201.4, 213, 199.5, 213, 199.5, 214.8, 196.3, 218, 194.5, 218, 194.5, 219.8, 191.3, 223, 189.5, 223, 189.5, 224.8, 186.3, 228, 178.5, 228, 166.5, 243, 158.5, 243, 151.5, 253, 138.9, 253, 136.9, 258, 109.5, 258, 109.5, 259.8, 106.3, 263, 63.9, 263, 62.7, 266, -76.5, 266, -77.8, 263, -131.5, 263, -131.5, 260.5, -132.8, 258, -155.9, 258, -157.9, 253, -180.9, 253, -182.9, 248, -196.5, 248, -196.5, 245.5, -197.8, 243, -206.5, 243, -206.5, 240.5, -207.8, 238, -216.5, 238, -216.5, 235.9, -233.5, 219.9, -233.5, 218, -235.3, 218, -238.5, 214.8, -238.5, 213, -240.3, 213, -243.5, 209.8, -243.5, 192.4, -248.5, 190.4, -248.5, 172, -246, 172, -243.5, 170.8, -243.5, 152, -241, 152, -238.5, 150.8, -238.5, 142, -236, 142, -233.5, 140.8, -233.5, 133, -236.3, 133, -238.3, 118, -241.1, 118, -243.2, 108, -245.3, 108, -248.5, 104.8, -248.5, 88, -249.5, 88, -249.5, 40, -248.5, 40, -248.5, 17, -246, 17, -243.5, 15.8, -243.5, -3, -241, -3, -238.5, -4.20001, -238.5, -33, -236, -33, -233.5, -34.2, -233.5, -58, -231, -58, -228.5, -59.2, -228.5, -73, -226, -73, -223.5, -74.2, -223.5, -98, -221, -98, -218.5, -99.2, -218.5, -113, -216.2, -113, -208.5, -119, -208.5, -126.8, -205.3, -130, -197.5, -130, -190.5, -140, -182.9, -140, -180.9, -145, -173.5, -145, -173.5, -146.8, -170.3, -150, -157.9, -150, -155.9, -155, -147.9, -155, -145.9, -160, -143.5, -160, -143.5, -167.4, -138.5, -169.4, -138.5, -188, -136, -188, -133.5, -189.2, -133.5, -232.4, -128.5, -234.4, -128.5, -263, -126, -263, -123.5, -264.2, -123.5, -266, -100.5, -266 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.122175, 0.122175 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Click = SubResource( 1 )
+
+[node name="CoinParticles" type="Particles2D" parent="."]
+emitting = false
+amount = 1
+one_shot = true
+randomness = 0.38
+process_material = SubResource( 8 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Timer" type="Timer" parent="CoinParticles"]
+
+[node name="NumberParticles" type="Particles2D" parent="."]
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource( 9 )
+texture = SubResource( 10 )
+script = ExtResource( 7 )
+label_text = "-1"
+
+[node name="Timer" type="Timer" parent="NumberParticles"]
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 100, 20 )
+transparent_bg = true
+handle_input_locally = false
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+gui_disable_input = true
+
+[node name="Label" type="Label" parent="Viewport"]
+margin_right = 40.0
+margin_bottom = 21.0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "+-"
+__meta__ = {
+"_edit_use_anchors_": false
+}

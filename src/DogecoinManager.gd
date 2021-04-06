@@ -4,16 +4,20 @@ class_name DogecoinManager
 
 var _dogecoins: float = 0
 
-var _dogecoin_label_string = "Dogecoins %s"
+var _dogecoin_debug_string = "Dogecoins %s"
 
-func add_coins_click(coins):
+signal coins_changed(current_coins)
+
+func add_coins(coins):
 	_dogecoins += coins
+	emit_signal("coins_changed", get_coins())
 	
 func spend_coins(coins):
 	_dogecoins -= coins
+	emit_signal("coins_changed", get_coins())
 	
 func get_coins():
 	return _dogecoins
 	
-func get_label_string():
-	return _dogecoin_label_string % (_dogecoins)
+func get_debug_string():
+	return _dogecoin_debug_string % (_dogecoins)
