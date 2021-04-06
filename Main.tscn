@@ -13,14 +13,20 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 24
+size = 22
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxFlat" id=4]
@@ -80,7 +86,6 @@ margin_bottom = 23.3784
 grow_horizontal = 0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "99999999.000 Doge/s"
 align = 2
 __meta__ = {
@@ -95,7 +100,6 @@ margin_right = 445.0
 margin_bottom = 401.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Dogecoins"
 align = 1
 __meta__ = {
@@ -111,7 +115,6 @@ margin_bottom = 431.0
 grow_horizontal = 2
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "999999999999999.00000"
 align = 1
 __meta__ = {
@@ -179,7 +182,7 @@ __meta__ = {
 
 [node name="UpgradesVContainer" type="VBoxContainer" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer"]
 margin_right = 600.0
-margin_bottom = 455.0
+margin_bottom = 480.0
 rect_min_size = Vector2( 600, 455 )
 custom_constants/separation = 120
 
@@ -212,9 +215,19 @@ doge_per_sec = 0.0
 blocked = true
 discovered = false
 
-[node name="AutoUpgradePanel2" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+[node name="AutoUpgradePanel6" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 360.0
 margin_bottom = 360.0
+texture_normal = null
+price = 0.0
+amount = 0
+doge_per_sec = 0.0
+blocked = true
+discovered = false
+
+[node name="AutoUpgradePanel2" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
+margin_top = 480.0
+margin_bottom = 480.0
 texture_normal = null
 price = 0.0
 amount = 0
