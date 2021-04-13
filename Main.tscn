@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Dogeclicker/DogeClicker.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/GUI/PauseScreen/PauseScreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/GUI/AutoUpgradePanel/AutoUpgradePanel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/GUI/ScrollContainer.gd" type="Script" id=10]
+[ext_resource path="res://src/GUI/UpgradeBox/UpgradeBox.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -33,12 +34,12 @@ font_data = ExtResource( 7 )
 content_margin_bottom = 120.0
 draw_center = false
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.952941, 0.862745, 0.513726, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 24
 font_data = ExtResource( 7 )
 
@@ -173,7 +174,6 @@ __meta__ = {
 }
 
 [node name="Farming" type="Tabs" parent="GUI/RightSection/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -200,54 +200,25 @@ custom_constants/separation = 120
 
 [node name="AutoUpgradePanel" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_bottom = 0.0
-texture_normal = null
-price = 0.0
-amount = 0
-doge_per_sec = 0.0
-blocked = true
-discovered = false
 
 [node name="AutoUpgradePanel3" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 120.0
 margin_bottom = 120.0
-texture_normal = null
-price = 0.0
-amount = 0
-doge_per_sec = 0.0
-blocked = true
-discovered = false
 
 [node name="AutoUpgradePanel5" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 240.0
 margin_bottom = 240.0
-texture_normal = null
-price = 0.0
-amount = 0
-doge_per_sec = 0.0
-blocked = true
-discovered = false
 
 [node name="AutoUpgradePanel6" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 360.0
 margin_bottom = 360.0
-texture_normal = null
-price = 0.0
-amount = 0
-doge_per_sec = 0.0
-blocked = true
-discovered = false
 
 [node name="AutoUpgradePanel2" parent="GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer" instance=ExtResource( 9 )]
 margin_top = 480.0
 margin_bottom = 480.0
-texture_normal = null
-price = 0.0
-amount = 0
-doge_per_sec = 0.0
-blocked = true
-discovered = false
 
 [node name="Upgrades" type="Tabs" parent="GUI/RightSection/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -259,7 +230,7 @@ margin_top = 20.0
 margin_right = 620.0
 margin_bottom = 480.0
 theme = ExtResource( 6 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -269,7 +240,7 @@ margin_left = 20.0
 margin_top = 50.0
 margin_right = 600.0
 margin_bottom = 205.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -279,21 +250,46 @@ margin_left = 6.0
 margin_top = 6.0
 margin_right = 103.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Doge Swag"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop"]
-margin_top = 55.0
+margin_top = 45.0
 margin_right = 580.0
-margin_bottom = 155.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 580, 120 )
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer"]
-margin_right = 580.0
+[node name="UpgradesHContainer" type="HBoxContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer"]
+margin_right = 700.0
 margin_bottom = 100.0
+rect_min_size = Vector2( 580, 100 )
+custom_constants/separation = 20
+
+[node name="Panel" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+
+[node name="Panel2" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+margin_left = 120.0
+margin_right = 220.0
+
+[node name="Panel3" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+margin_left = 240.0
+margin_right = 340.0
+
+[node name="Panel4" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+margin_left = 360.0
+margin_right = 460.0
+
+[node name="Panel5" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+margin_left = 480.0
+margin_right = 580.0
+
+[node name="Panel6" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+margin_left = 600.0
+margin_right = 700.0
 
 [node name="ModsShop" type="Panel" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper"]
 margin_left = 20.0
@@ -310,24 +306,27 @@ margin_left = 6.0
 margin_top = 6.0
 margin_right = 149.0
 margin_bottom = 37.0
-custom_fonts/font = SubResource( 5 )
-text = "Cursor Mods"
+custom_fonts/font = SubResource( 7 )
+text = "Dope Mods"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop"]
-margin_top = 55.0
+margin_top = 45.0
 margin_right = 580.0
-margin_bottom = 155.0
+margin_bottom = 165.0
+rect_min_size = Vector2( 580, 120 )
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer"]
+[node name="UpgradesHContainer" type="HBoxContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer"]
 margin_right = 580.0
 margin_bottom = 100.0
+rect_min_size = Vector2( 580, 100 )
+custom_constants/separation = 20
 
 [node name="Gallery" type="Tabs" parent="GUI/RightSection/TabContainer"]
 visible = false

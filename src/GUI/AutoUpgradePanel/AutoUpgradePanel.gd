@@ -30,7 +30,7 @@ var upgrade_hint: String
 var blocked_label_color: Color = Color(1, 0, 0, 1)
 var unblocked_label_color: Color = Color(1, 1, 1, 1)
 
-signal buy_upgrade(name, type, price, dps)
+signal buy_auto_upgrade(name, type, price, dps)
 
 func _ready():
 	amount_label.text = amount_formatted_string % (amount)
@@ -70,7 +70,7 @@ func on_buy_upgrade_success(name):
 		
 
 func _on_Button_pressed():
-	emit_signal("buy_upgrade", title, "auto_farmer", price, doge_per_sec)
+	emit_signal("buy_auto_upgrade", title, "auto_farmer", price, doge_per_sec)
 
 
 func on_coins_changed(coins):

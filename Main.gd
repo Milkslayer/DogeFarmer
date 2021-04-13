@@ -18,7 +18,8 @@ onready var scrolling_bg = $GUI/Background/ScrollingBackground
 onready var pause_screen = $GUI/PauseScreen
 onready var doge_clicker = $GUI/DogeClicker
 onready var auto_upgrades_container = $GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer
-
+onready var doge_upgrades_container = $GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer
+onready var mod_upgrades_container = $GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer
 
 signal pause
 signal buy_upgrade_success(upgrade_name)
@@ -72,10 +73,18 @@ func _init_signals():
 	get_node("GUI/PauseScreen").connect("unpause", self, "_on_game_unpause")
 	self.connect("pause", pause_screen, "pause_game")
 	
+#	Initiate all auto upgrades
 	for upgrade_element in auto_upgrades_container.get_children():
-		upgrade_element.connect("buy_upgrade", self, "_on_buy_upgrade")
+		upgrade_element.connect("buy_auto_upgrade", self, "_on_buy_auto_upgrade")
 		self.connect("buy_upgrade_success", upgrade_element, "on_buy_upgrade_success")
 		_dogecoin_manager.connect("coins_changed", upgrade_element, "on_coins_changed")
+	
+#	Initate all doge and mod upgrades
+	for upgrade_element in doge_upgrades_container.get_children():
+		pass
+		
+	for upgrade_element in mod_upgrades_container.get_children():
+		pass	
 	
 func _on_AutoFarmTimer_timeout():
 	_add_dogecoins_auto()
@@ -98,7 +107,7 @@ func _on_game_unpause():
 		print("[INFO] Game state set to ACTIVE")
 
 
-func _on_buy_upgrade(name, type, price, doge_per_sec):
+func _on_buy_auto_upgrade(name, type, price, doge_per_sec):
 	if price <= _dogecoin_manager.get_coins():
 		if type == "auto_farmer":
 			if _auto_farmers.has(name):
