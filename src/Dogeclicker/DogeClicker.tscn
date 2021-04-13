@@ -75,7 +75,7 @@ scale = 0.29
 scale_random = 0.16
 color_ramp = SubResource( 5 )
 
-[sub_resource type="ViewportTexture" id=10]
+[sub_resource type="ViewportTexture" id=12]
 viewport_path = NodePath("Viewport")
 
 [sub_resource type="DynamicFont" id=11]
@@ -120,14 +120,14 @@ emitting = false
 amount = 1
 one_shot = true
 process_material = SubResource( 9 )
-texture = SubResource( 10 )
+texture = SubResource( 12 )
 script = ExtResource( 7 )
 label_text = "-1"
 
 [node name="Timer" type="Timer" parent="NumberParticles"]
 
 [node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 100, 20 )
+size = Vector2( 500, 20 )
 transparent_bg = true
 handle_input_locally = false
 disable_3d = true
@@ -136,6 +136,8 @@ render_target_v_flip = true
 gui_disable_input = true
 
 [node name="Label" type="Label" parent="Viewport"]
+anchor_left = 0.5
+anchor_right = 0.5
 margin_right = 40.0
 margin_bottom = 21.0
 theme = ExtResource( 6 )
