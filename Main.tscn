@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Dogeclicker/DogeClicker.tscn" type="PackedScene" id=2]
@@ -32,6 +32,17 @@ font_data = ExtResource( 7 )
 [sub_resource type="StyleBoxFlat" id=4]
 content_margin_bottom = 120.0
 draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.952941, 0.862745, 0.513726, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -162,6 +173,7 @@ __meta__ = {
 }
 
 [node name="Farming" type="Tabs" parent="GUI/RightSection/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -236,11 +248,86 @@ blocked = true
 discovered = false
 
 [node name="Upgrades" type="Tabs" parent="GUI/RightSection/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
 margin_top = 55.0
+
+[node name="Wrapper" type="Panel" parent="GUI/RightSection/TabContainer/Upgrades"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 620.0
+margin_bottom = 480.0
+theme = ExtResource( 6 )
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradesShop" type="Panel" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 600.0
+margin_bottom = 205.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopLabel" type="Label" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 103.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 5 )
+text = "Doge Swag"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop"]
+margin_top = 55.0
+margin_right = 580.0
+margin_bottom = 155.0
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer"]
+margin_right = 580.0
+margin_bottom = 100.0
+
+[node name="ModsShop" type="Panel" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper"]
+margin_left = 20.0
+margin_top = 255.0
+margin_right = 600.0
+margin_bottom = 410.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopLabel" type="Label" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 149.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 5 )
+text = "Cursor Mods"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop"]
+margin_top = 55.0
+margin_right = 580.0
+margin_bottom = 155.0
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer"]
+margin_right = 580.0
+margin_bottom = 100.0
 
 [node name="Gallery" type="Tabs" parent="GUI/RightSection/TabContainer"]
 visible = false
