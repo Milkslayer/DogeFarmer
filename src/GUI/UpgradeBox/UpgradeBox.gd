@@ -13,8 +13,7 @@ signal buy_upgrade(upgrade_name, type, price)
 
 
 func _ready():
-	self.material = self.material.duplicate()
-
+	pass
 
 func _on_UpgradeBox_pressed():
 	emit_signal("buy_upgrade", self.upgrade_name, self.type, self.price)
