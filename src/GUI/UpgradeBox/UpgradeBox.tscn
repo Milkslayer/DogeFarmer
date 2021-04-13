@@ -5,7 +5,7 @@
 [ext_resource path="res://src/GUI/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/img/upgrade_placeholder_hover.png" type="Texture" id=4]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
 
 uniform bool has_overlay = false;
@@ -25,7 +25,7 @@ void fragment(){
 "
 
 [sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+shader = SubResource( 9 )
 shader_param/has_overlay = false
 shader_param/overlay_color = Color( 1, 1, 1, 1 )
 shader_param/overlay_visibility = 0

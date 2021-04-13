@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Dogeclicker/DogeClicker.tscn" type="PackedScene" id=2]
@@ -43,7 +43,104 @@ bg_color = Color( 0.952941, 0.862745, 0.513726, 1 )
 size = 24
 font_data = ExtResource( 7 )
 
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform bool has_overlay = false;
+uniform vec4 overlay_color : hint_color = vec4(1, 1, 1, 1);
+uniform float overlay_visibility : hint_range(0, 1) = 1;
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+	if(has_overlay){
+		vec4 color = overlay_color;
+		color.x *= overlay_visibility;
+		color.y *= overlay_visibility;
+		color.z *= overlay_visibility;
+		COLOR *= color;
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 9 )
+shader_param/has_overlay = true
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0.27
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 9 )
+shader_param/has_overlay = true
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 9 )
+shader_param/has_overlay = true
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = SubResource( 9 )
+shader_param/has_overlay = true
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
 [sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=20]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=21]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = SubResource( 9 )
+shader_param/has_overlay = false
+shader_param/overlay_color = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -218,7 +315,6 @@ margin_top = 480.0
 margin_bottom = 480.0
 
 [node name="Upgrades" type="Tabs" parent="GUI/RightSection/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -270,26 +366,37 @@ rect_min_size = Vector2( 580, 100 )
 custom_constants/separation = 20
 
 [node name="Panel" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 10 )
 
 [node name="Panel2" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 11 )
 margin_left = 120.0
 margin_right = 220.0
+enable_overlay = true
+overlay_visibility = 27
 
 [node name="Panel3" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 12 )
 margin_left = 240.0
 margin_right = 340.0
 
 [node name="Panel4" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 13 )
 margin_left = 360.0
 margin_right = 460.0
+enable_overlay = true
 
 [node name="Panel5" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 14 )
 margin_left = 480.0
 margin_right = 580.0
+enable_overlay = true
 
 [node name="Panel6" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 15 )
 margin_left = 600.0
 margin_right = 700.0
+enable_overlay = true
 
 [node name="ModsShop" type="Panel" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper"]
 margin_left = 20.0
@@ -323,10 +430,43 @@ __meta__ = {
 }
 
 [node name="UpgradesHContainer" type="HBoxContainer" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer"]
-margin_right = 580.0
+margin_right = 820.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 580, 100 )
 custom_constants/separation = 20
+
+[node name="Panel6" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 16 )
+
+[node name="Panel7" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 17 )
+margin_left = 120.0
+margin_right = 220.0
+
+[node name="Panel8" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 18 )
+margin_left = 240.0
+margin_right = 340.0
+
+[node name="Panel9" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 19 )
+margin_left = 360.0
+margin_right = 460.0
+
+[node name="Panel10" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 20 )
+margin_left = 480.0
+margin_right = 580.0
+
+[node name="Panel11" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 21 )
+margin_left = 600.0
+margin_right = 700.0
+
+[node name="Panel12" parent="GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer/UpgradesHContainer" instance=ExtResource( 11 )]
+material = SubResource( 22 )
+margin_left = 720.0
+margin_right = 820.0
 
 [node name="Gallery" type="Tabs" parent="GUI/RightSection/TabContainer"]
 visible = false
