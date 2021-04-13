@@ -11,12 +11,21 @@ var price
 
 signal buy_upgrade(upgrade_name, type, price)
 
+
 func _ready():
 	pass
 
-	
+
 func _on_UpgradeBox_pressed():
 	emit_signal("buy_upgrade", self.upgrade_name, self.type, self.price)
+
+
+func on_buy_upgrade_success(name):
+	pass
+
+
+func on_coins_changed(coins):
+	pass
 
 
 func set_overlay(val):

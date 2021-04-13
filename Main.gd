@@ -79,12 +79,12 @@ func _init_signals():
 		self.connect("buy_upgrade_success", upgrade_element, "on_buy_upgrade_success")
 		_dogecoin_manager.connect("coins_changed", upgrade_element, "on_coins_changed")
 	
-#	Initate all doge and mod upgrades
-	for upgrade_element in doge_upgrades_container.get_children():
-		pass
+#	Initiate all doge and mod upgrades
+	for upgrade_element in doge_upgrades_container.get_children() + mod_upgrades_container.get_children():
+		upgrade_element.connect("buy_upgrade", self, "_on_buy_upgrade")
+		self.connect("buy_upgrade_success", upgrade_element, "on_buy_upgrade_success")
+		_dogecoin_manager.connect("coins_changed", upgrade_element, "on_coins_changed")
 		
-	for upgrade_element in mod_upgrades_container.get_children():
-		pass	
 	
 func _on_AutoFarmTimer_timeout():
 	_add_dogecoins_auto()
@@ -118,6 +118,10 @@ func _on_buy_auto_upgrade(name, type, price, doge_per_sec):
 		emit_signal("buy_upgrade_success", name)
 		if DEBUG:
 			print("[INFO] Bought upgrade %s for %f of type %s giving %f doge per tick" % [name, price, type, doge_per_sec])
+
+
+func _on_buy_upgrade(name, type, price):
+	pass
 
 # Signals end
 
