@@ -5,17 +5,16 @@
 [ext_resource path="res://src/GUI/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/img/upgrade_placeholder_hover.png" type="Texture" id=4]
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=16]
 code = "shader_type canvas_item;
 
 uniform bool has_overlay = false;
-uniform vec4 overlay_color : hint_color = vec4(1, 1, 1, 1);
+uniform vec4 overlay_color_blocked : hint_color = vec4(1, 1, 1, 1);
 uniform float overlay_visibility : hint_range(0, 1) = 1;
-
 void fragment(){
 	COLOR = texture(TEXTURE, UV);
 	if(has_overlay){
-		vec4 color = overlay_color;
+		vec4 color = overlay_color_blocked;
 		color.x *= overlay_visibility;
 		color.y *= overlay_visibility;
 		color.z *= overlay_visibility;
@@ -24,15 +23,15 @@ void fragment(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
-shader = SubResource( 9 )
-shader_param/has_overlay = false
-shader_param/overlay_color = Color( 1, 1, 1, 1 )
-shader_param/overlay_visibility = 0
+shader = SubResource( 16 )
+shader_param/has_overlay = true
+shader_param/overlay_color_blocked = Color( 1, 1, 1, 1 )
+shader_param/overlay_visibility = 0.03
 
 [node name="UpgradeBox" type="TextureButton"]
-material = SubResource( 3 )
+material = SubResource( 2 )
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
@@ -44,4 +43,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+upgrade_name = "upgrade"
+type = "doge_upgrade"
+enable_overlay = true
+overlay_visibility = 3
 [connection signal="pressed" from="." to="." method="_on_UpgradeBox_pressed"]

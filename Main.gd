@@ -19,7 +19,7 @@ onready var pause_screen = $GUI/PauseScreen
 onready var doge_clicker = $GUI/DogeClicker
 onready var auto_upgrades_container = $GUI/RightSection/TabContainer/Farming/ScrollContainer/UpgradesVContainer
 onready var doge_upgrades_container = $GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer
-onready var mod_upgrades_container = $GUI/RightSection/TabContainer/Upgrades/Wrapper/UpgradesShop/ScrollContainer/UpgradesHContainer
+onready var mod_upgrades_container = $GUI/RightSection/TabContainer/Upgrades/Wrapper/ModsShop/ScrollContainer/UpgradesHContainer
 
 signal pause
 signal buy_upgrade_success(upgrade_name)
@@ -121,7 +121,11 @@ func _on_buy_auto_upgrade(name, type, price, doge_per_sec):
 
 
 func _on_buy_upgrade(name, type, price):
-	pass
+	if price <= _dogecoin_manager.get_coins():
+		_dogecoin_manager.spend_coins(price)
+		emit_signal("buy_upgrade_success", name)
+		if DEBUG:
+			print("[INFO] Bought upgrade %s for %f of type %s" % [name, price, type])
 
 # Signals end
 
