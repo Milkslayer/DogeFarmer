@@ -12,8 +12,9 @@ export(String, "doge_upgrade", "mod_upgrade") var type
 export var enable_overlay: bool = false setget _set_overlay
 export (int, 0, 100, 1) var overlay_visibility setget _set_overlay_visibility
 export var price: float = 0
+export (String, MULTILINE) var description
 
-var upgrade_hint
+var upgrade_hint = "%s\nPrice: %f\nDescription:\n%s"
 var current_state: int
 var hover_texture: Texture
 
@@ -27,6 +28,8 @@ signal buy_upgrade(upgrade_name, type, price)
 func _ready():
 	hover_texture = self.texture_hover
 	self.material = self.material.duplicate()
+	
+	self.hint_tooltip = upgrade_hint % [upgrade_name, price, description]
 
 	
 func _on_UpgradeBox_pressed():
@@ -39,13 +42,10 @@ func on_buy_upgrade_success(name):
 
 
 func on_coins_changed(coins):
-	print(upgrade_name, ": ", coins, " | ", self.price)
-	
 	if coins >= self.price:
 		set_state(self.STATES.available)
 	else:
 		set_state(self.STATES.blocked)		
-	print(current_state)
 
 func set_state(state: int):
 	if state == self.STATES.blocked:
