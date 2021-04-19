@@ -26,6 +26,7 @@ signal buy_upgrade(upgrade_name, type, price)
 
 func _ready():
 	hover_texture = self.texture_hover
+	self.material = self.material.duplicate()
 
 	
 func _on_UpgradeBox_pressed():
@@ -38,11 +39,13 @@ func on_buy_upgrade_success(name):
 
 
 func on_coins_changed(coins):
+	print(upgrade_name, ": ", coins, " | ", self.price)
+	
 	if coins >= self.price:
 		set_state(self.STATES.available)
 	else:
 		set_state(self.STATES.blocked)		
-
+	print(current_state)
 
 func set_state(state: int):
 	if state == self.STATES.blocked:
